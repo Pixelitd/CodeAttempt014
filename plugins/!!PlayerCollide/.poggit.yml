@@ -1,0 +1,9 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/AIPTU/PlayerCollide
+build-by-default: true
+branches:
+- master
+projects:
+  PlayerCollide:
+    path: ""
+    icon: "icon.png"
+...

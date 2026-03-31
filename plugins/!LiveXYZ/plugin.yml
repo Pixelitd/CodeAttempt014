@@ -1,0 +1,15 @@
+name: LiveXYZ
+main: dktapps\LiveXYZ
+author: dktapps, Pixelited
+description: Show real-time player coordinates
+version: 1.0.1-PORT
+api: [2.0.0]
+commands:
+  xyz:
+    description: Show your coordinates real-time as you move
+    permission: livexyz
+    usage: /xyz
+permissions:
+  livexyz:
+    default: true
+    description: "Allows use of LiveXYZ"

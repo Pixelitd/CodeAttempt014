@@ -1,0 +1,14 @@
+name: BodyActions
+main: BodyActions\Main
+description: Makes you lay and sit anywhere
+version: 1.0
+api: 2.0.0
+author: Pixelited
+commands:
+ lay:
+  description: "Lays you down"
+  usage: "/lay"
+ sit:
+   description: "Sits you down"
+   usage: "/sit"
+  

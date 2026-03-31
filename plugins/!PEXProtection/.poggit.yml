@@ -1,0 +1,6 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/RevivalPMMP/PEXProtection
+projects:
+  PEXProtection:
+    path: /
+    icon: icon.png
+...

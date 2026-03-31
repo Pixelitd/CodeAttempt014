@@ -1,0 +1,73 @@
+main: aliuly\worldprotect\Main
+api: 2.0.0
+load: STARTUP
+
+name: WorldProtect
+description: Protect worlds from griefers, pvp, limits and borders
+version: 3.0.1-PORT
+author: aliuly, Pixelited
+website: https://github.com/Muirfield/pocketmine-plugins/tree/master/WorldProtect
+
+softdepend:
+  - SimpleAuth
+  - BasicHUD
+
+commands:
+  worldprotect:
+    description: Manage worlds
+    usage: "/worldprotect <help|sub-cmd> [options: string]"
+    permission: worldprotect.cmd.all
+    aliases: ['wp']
+
+permissions:
+  worldprotect.motd:
+    default: true
+    description: "Display MOTD"
+  worldprotect.cmd.all:
+    default: op
+    description: "Allow access to protect command"
+  worldprotect.cmd.protect:
+    default: op
+    description: "Change protect mode"
+  worldprotect.cmd.protect.auth:
+    default: op
+    description: "Permit place/destroy in protected worlds"
+  worldprotect.cmd.border:
+    default: op
+    description: "Allow contfol of border functionality"
+  worldprotect.cmd.pvp:
+    default: op
+    description: "Allow PvP controls"
+  worldprotect.cmd.noexplode:
+    default: op
+    description: "Allow NoExplode controls"
+  worldprotect.cmd.limit:
+    default: op
+    description: "Allow control to limit functionality"
+  worldprotect.cmd.wpmotd:
+    default: op
+    description: "Allow editing the motd"
+  worldprotect.cmd.addrm:
+    default: op
+    description: "Allow modifying the auth list"
+  worldprotect.cmd.unbreakable:
+    default: op
+    description: "Modify unbreakable block list"
+  worldprotect.cmd.bancmd:
+    default: op
+    description: "Ban/unban commands"
+  worldprotect.cmd.banitem:
+    default: op
+    description: "Ban/unban items"
+  worldprotect.banitem.exempt:
+    default: false
+    description: "it is able to use banned items"
+  worldprotect.cmd.info:
+    default: true
+    description: "Show worldprotect config info"
+  worldprotect.cmd.gm:
+    default: op
+    description: "Allow setting a per-world gamemode"
+  worldprotect.cmd.gm.exempt:
+    default: false
+    description: "Users with this permissions will ignore per world gm"

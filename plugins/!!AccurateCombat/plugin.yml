@@ -1,0 +1,6 @@
+name: AccurateCombat
+main: AccurateCombat\Main
+version: 1.0.0
+api: 2.0.0
+author: MG79
+description: Makes knockback and damage more accurate to real Bedrock behavior

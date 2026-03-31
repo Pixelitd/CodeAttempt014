@@ -1,0 +1,79 @@
+#Modified version of ChatCensor
+
+name: TextFilter
+main: TextFilter\TextFilter
+version: 2.3-MOD-1.0
+api: 2.0.0
+load: STARTUP
+author: Pixelited, EvolSoft
+description: A powerful text filtering plugin (Modifed version of ChatCensor)
+
+commands:
+ textfilter:
+   aliases: [tf, textf, filter]
+   description: TextFilter commands.
+   permission: chatcensor
+ mute:
+   description: Mute a player.
+   permission: textfilter.commands.mute
+ unmute:
+   description: Unmute a player.
+   permission: textfilter.commands.unmute
+ listmuted:
+   description: Get the list of muted players.
+   permission: textfilter.commands.listmuted
+ addword:
+   description: Add a censored word.
+   permission: textfilter.commands.addword
+ removeword:
+   description: Remove a censored word.
+   permission: textfilter.commands.removeword
+permissions:
+ textfilter:
+  default: op
+  description: TextFilter permission tree.
+  children:
+   textfilter.bypass:
+    default: op
+    description: Bypass TextFilter features.
+    children:
+     textfilter.bypass.censor:
+      default: op
+      description: Bypass TextFilter censor feature.
+     textfilter.bypass.anti-caps:
+      default: op
+      description: Bypass TextFilter anti-caps feature.
+     textfilter.bypass.char-check:
+      default: op
+      description: Bypass TextFilter char-check feature.
+     textfilter.bypass.anti-spam:
+      default: op
+      description: Bypass TextFilter spam-check feature.
+ textfilter.commands:
+  default: op
+  description: TextFilter commands permission tree.
+  children:
+   textfilter.commands.help:
+    default: op
+    description: Let player read TextFilter commands help.
+   textfilter.commands.info:
+    default: op
+    description: Let player read info about TextFilter.
+   textfilter.commands.reload:
+    default: op
+    description: Let player reload TextFilter configuration.
+   textfilter.commands.addword:
+    default: op
+    description: Let player add a censored word.
+   textfilter.commands.removeword:
+    default: op
+    description: Let player remove a censored word.
+   textfilter.commands.mute:
+    default: op
+    description: Let player mute a player.
+   textfilter.commands.unmute:
+    default: op
+    description: Let player unmute a player.
+   textfilter.commands.listmuted:
+    default: op
+    description: Let player show the list of muted players.

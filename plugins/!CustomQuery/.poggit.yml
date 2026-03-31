@@ -1,0 +1,11 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/iZeaoGamer/CustomQuery
+branches:
+- master
+projects:
+  CustomQuery:
+    libs:
+      - src: JackMD/UpdateNotifier/UpdateNotifier
+        version: ^1.0.0
+      - src: JackMD/ConfigUpdater/ConfigUpdater
+        version: ^1.0.0
+...

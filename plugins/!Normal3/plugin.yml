@@ -1,0 +1,6 @@
+name: Normal3
+main: normal3\Main
+api: 2.0.0
+version: 1.0
+load: STARTUP
+author: Pixelited

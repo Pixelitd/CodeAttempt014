@@ -1,0 +1,51 @@
+# French translations, by archie426. Improved by Whaxion
+
+# Francais:
+---
+commands:
+  errors:
+    no-permission: "Tu n'as pas la permission"
+    console-use: "Cette commande ne peut être utilisé par la console"
+    radius-not-numeric: "Le rayon doit être un nombre"
+    radius-too-big: "Le rayon est trop grand"
+    no-target-found: "Cible introuvable"
+    no-valid-block: "Pas de block valide"
+    shape-not-found: "Forme introuvable"
+    no-modifications: "Pas de modifications"
+    template-not-existing: "Ce modèle n'existe pas"
+    name-not-set: "Veuillez donner un nom"
+    paste-not-found: "Copie introuvable"
+    clone-not-found: "Clone introuvable"
+    preset-already-exists: "That preset already exists."
+    preset-doesnt-exist: "That preset doesn't exist."
+  succeed:
+    default: "La forme a été ajoutée avec succès"
+    undo: "Annulé avec succès"
+    language: "La langue a été changé"
+    paste: "Collage effectué avec succès"
+    clone: "Clone réalisé avec succès"
+    brush:
+      reset: "Le pinceau a été réinitialisé avec succès"
+    preset:
+      name: "Preset creation process started. Type a name in the chat,"
+      cancel: "or type 'cancel' to cancel the process."
+      canceled: "Preset creation has been canceled."
+
+brushwand:
+  disable: "Pinceau désactivé"
+  enable: "Pinceau activé"
+
+brush:
+  shape: "Couche: "
+  type: "Type: "
+  blocks: "Blocs: "
+  size: "Taille: "
+  perfect: "Parfait: "
+  obsolete: "Obsolète: "
+  height: "Hauteur: "
+  gravity: "Gravité: "
+  decrement: "Diminuer: "
+  biome: "Biome: "
+  hollow: "Creux: "
+  preset: "Preset: "
+...

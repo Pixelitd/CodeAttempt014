@@ -1,0 +1,13 @@
+# AccurateCombat Configuration
+# Adjust these values to tune the PvP feeling to your liking
+
+knockback:
+  horizontal: 0.35     # How far players are pushed sideways
+  vertical: 0.35       # How much players are lifted upward
+  friction: 0.6        # How much knockback slows down over time (0.0 = no friction, 1.0 = no knockback)
+  delay: 10            # Minimum ticks between knockback hits
+
+damage:
+  base_multiplier: 1.0 # Multiplies all melee damage
+  critical_multiplier: 1.5 # Damage multiplier for critical hits
+  armor_reduction: true # Whether to apply vanilla armor reduction

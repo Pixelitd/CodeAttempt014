@@ -1,0 +1,15 @@
+name: PEXProtection
+author: "RevivalPMMP, Pixelited"
+api: [2.0.0]
+main: RevivalPMMP\PEXProtection\Main
+version: 0.1.2-PORT
+commands:
+  pexprotection:
+    description: "PEXProtection command"
+    usage: "/pexprotection <add|del|world> <args...>"
+    aliases: [pexp]
+    permission: "pexprotection.command"
+permissions:
+  pexprotection.command:
+    default: op
+    description: "Permission to use the PEXProtection command"

@@ -1,0 +1,14 @@
+# PlayerCollide Configuration
+
+# The maximum distance (in blocks) between two players for collision to occur.
+# Players closer than this distance will be considered for collision.
+collision_distance: 0.8
+
+# The base knockback strength applied when players collide.
+# This is the minimum knockback applied.
+knockback_strength: 0.1
+
+# The multiplier for knockback strength based on player speed.
+# If a player is moving fast, the knockback will be increased by this multiplier
+# multiplied by the player's speed.
+speed_knockback_multiplier: 0.5

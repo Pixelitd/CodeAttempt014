@@ -1,0 +1,5 @@
+name: PlayerCollide
+main: aiptu\playercollide\PlayerCollide
+version: 1.0.0
+api: 2.0.0
+author: AIPTU

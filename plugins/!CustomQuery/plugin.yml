@@ -1,0 +1,6 @@
+name: CustomQuery
+version: 1.1.1-BETA-MOD
+api: 2.0.0
+author: iZeaoGamer, Pixelited
+main: CustomQuery\iZeaoGamer\Main
+description: "A customizable query plugin, where you can configure anything that relates to Querying your server"

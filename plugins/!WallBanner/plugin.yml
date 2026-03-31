@@ -1,0 +1,17 @@
+# __        __    _ _ ____                              
+# \ \      / /_ _| | | __ )  __ _ _ __  _ __   ___ _ __ 
+#  \ \ /\ / / _` | | |  _ \ / _` | '_ \| '_ \ / _ \ '__|
+#   \ V  V / (_| | | | |_) | (_| | | | | | | |  __/ |   
+#    \_/\_/ \__,_|_|_|____/ \__,_|_| |_|_| |_|\___|_|   
+#
+# Copyright (c) 2021 - Hadsync
+# Discord: Hadsync#0001
+name: WallBanner
+version: 1.1.6
+api: 2.0.0
+main: wallbanner\Loader
+author: "Anya Tatanova, Hadsync"
+
+permissions:
+  wallbanner.manager:
+    description: "Permission to use wallbanner"

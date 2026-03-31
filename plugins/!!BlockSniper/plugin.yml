@@ -1,0 +1,104 @@
+---
+name: "BlockSniper"
+version: 1.3.0-MOD-0.1
+api: [2.0.0, 2.1.0, 3.0.0-ALPHA1, 3.0.0-ALPHA2, 3.0.0-ALPHA3, 3.0.0-ALPHA4]
+author: "Sandertv"
+main: Sandertv\BlockSniper\Loader
+
+permissions:
+    blocksniper:
+        default: false
+        description: "Allows access to all BlockSniper features."
+        children:
+            blocksniper.command:
+                default: false
+                description: "Allows access to all BlockSniper command features."
+                children:
+                    blocksniper.command.brush:
+                        default: op
+                        description: "Allows access to the brush wand command."
+                    blocksniper.command.undo:
+                        default: op
+                        description: "Allows access to the undo command."
+                    blocksniper.command.blocksniper:
+                        default: op
+                        description: "Allows access to the BlockSniper commmand."
+                    blocksniper.command.clone:
+                        default: op
+                        description: "Allows access to the clone command."
+                    blocksniper.command.paste:
+                        default: op
+                        description: "Allows access to the paste command."
+            blocksniper.type:
+                default: false
+                description: "Allows access to all BlockSniper types."
+                children:
+                    blocksniper.type.fill:
+                        default: op
+                        description: "Allows access to the fill type."
+                    blocksniper.type.overlay:
+                        default: op
+                        description: "Allows access to the overlay type."
+                    blocksniper.type.layer:
+                        default: op
+                        description: "Allows access to the layer type"
+                    blocksniper.type.replace:
+                        default: op
+                        description: "Allows access to the replace type"
+                    blocksniper.type.clean:
+                        default: op
+                        description: "Allows access to the clean type"
+                    blocksniper.type.drain:
+                        default: op
+                        description: "Allows access to the drain type"
+                    blocksniper.type.leafblower:
+                        default: op
+                        description: "Allows access to the leaf blower type"
+                    blocksniper.type.flatten:
+                        default: op
+                        description: "Allows access to the flatten type"
+                    blocksniper.type.flattenall:
+                        default: op
+                        description: "Allows access to the flatten all type"
+                    blocksniper.type.expand:
+                        default: op
+                        description: "Allows access to the expand type"
+                    blocksniper.type.melt:
+                        default: op
+                        description: "Allows access to the melt type"
+                    blocksniper.type.cleanentities:
+                        default: op
+                        description: "Allows access to the clean entities type"
+                    blocksniper.type.biome:
+                        default: op
+                        description: "Allows access to the biome type"
+                    blocksniper.type.raise:
+                        default: op
+                        description: "Allows access to the raise type"
+            blocksniper.shape:
+                default: false
+                description: "Allows access to all BlockSniper shapes."
+                children:
+                    blocksniper.shape.sphere:
+                        default: op
+                        description: "Allows access to the sphere shape."
+                    blocksniper.shape.cuboid:
+                        default: op
+                        description: "Allows access to the cuboid shape."
+                    blocksniper.shape.standingcylinder:
+                        default: op
+                        description: "Allows access to the standing cylinder shape."
+                    blocksniper.shape.cube:
+                        default: op
+                        description: "Allows access to the cube shape."
+            blocksniper.cloning:
+                default: false
+                description: "Allows access to all BlockSniper clone types."
+                children:
+                    blocksniper.cloning.copy:
+                        default: op
+                        description: "Allows access to the copy clone type."
+                    blocksniper.cloning.template:
+                        default: op
+                        description: "Allows access to the template clone type."
+...
