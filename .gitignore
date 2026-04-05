@@ -1,0 +1,17 @@
+plugins/*
+players/*
+worlds/*
+crashdumps/*
+!/plugins/!*
+!/plugins/!!*
+php
+server.properties
+banned-cids.txt
+banned-ips.txt
+banned-players.txt
+genisys.yml
+khronos.yml
+ops.txt
+pocketmine.yml
+server.log
+white-list.txt
