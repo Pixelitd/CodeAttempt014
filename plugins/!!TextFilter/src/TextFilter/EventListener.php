@@ -159,7 +159,7 @@ class EventListener implements Listener {
 				foreach($words as $word){
 				//Check if websites are blocked
                     if($cfg["censor"]["block-urls"]){
-                        $domain = preg_replace('/(:\d+)?(\/.*)?$/', '', $word);
+                        /*$domain = preg_replace('/(:\d+)?(\/.*)?$/', '', $word);
                         if(!empty($domain)){
                         	if((checkdnsrr($domain, 'A')) || checkdnsrr($domain, 'AAAA') || checkdnsrr($domain, 'CNAME')){
                             	if($cfg["censor"]["log-to-player"]){
@@ -168,8 +168,8 @@ class EventListener implements Listener {
                             	$event->setCancelled(true);
                             	return;
                             }
-                        }
-                        if(preg_match($regex = '/^(?:[a-z0-9-]+\.)+(?:com|net|org|io|gov|edu|co|info|biz|tv|me|xyz|gg|club|shop|store|live|online|site|link|app|dev|ai)(?::(\d{1,5}))?(\/[^\s]*)?$/i', $word)){
+                        }*/
+                        if(preg_match('/^(?:(?:https?|ftp|ftps|ws|wss):\/\/)?(?:www\.)?(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+(?::\d{1,5})?(?:\/[^\s]*)?$/i', $word)){
                             if($cfg["censor"]["log-to-player"]){
                                 $player->sendMessage($this->plugin->replaceVars($this->plugin->getMessage("no-urls"), array("PREFIX" => TextFilter::PREFIX)));
                             }
@@ -240,13 +240,25 @@ class EventListener implements Listener {
         $words = explode(" ", $message);
         foreach($words as $word){
             //Check if websites are blocked
-            if($cfg["censor"]["block-urls"] && preg_match('/^(?:https?:\/\/(?:www\.)?)?(?![\d.]+$)([\w.-]+(?:\.[\w.-]+)+)(?::\d{1,5})?((?:\/[\w.-]*)*\/?)$/i', $word)){
-                if($cfg["censor"]["log-to-player"]){
-                    $player->sendMessage($this->plugin->replaceVars($this->plugin->getMessage("no-urls"), array("PREFIX" => TextFilter::PREFIX)));
-                }
-                $event->setCancelled(true);
-                return;
-            }
+            if($cfg["censor"]["block-urls"]){
+                        /*$domain = preg_replace('/(:\d+)?(\/.*)?$/', '', $word);
+                        if(!empty($domain)){
+                        	if((checkdnsrr($domain, 'A')) || checkdnsrr($domain, 'AAAA') || checkdnsrr($domain, 'CNAME')){
+                            	if($cfg["censor"]["log-to-player"]){
+                                	$player->sendMessage($this->plugin->replaceVars($this->plugin->getMessage("no-urls"), array("PREFIX" => TextFilter::PREFIX)));
+                            	}
+                            	$event->setCancelled(true);
+                            	return;
+                            }
+                        }*/
+                        if(preg_match('/^(?:(?:https?|ftp|ftps|ws|wss):\/\/)?(?:www\.)?(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]{2,})+(?::\d{1,5})?(?:\/[^\s]*)?$/i', $word)){
+                            if($cfg["censor"]["log-to-player"]){
+                                $player->sendMessage($this->plugin->replaceVars($this->plugin->getMessage("no-urls"), array("PREFIX" => TextFilter::PREFIX)));
+                            }
+                            $event->setCancelled(true);
+                            return;
+                        }
+                    }
             //Check if IP addresses are blocked
             if($cfg["censor"]["block-ips"] && preg_match('/^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)){3}$/', $word)){
                 if($cfg["censor"]["log-to-player"]){

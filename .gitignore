@@ -4,6 +4,8 @@ worlds/*
 crashdumps/*
 !/plugins/!*
 !/plugins/!!*
+bin
+start_win.cmd
 php
 server.properties
 banned-cids.txt
