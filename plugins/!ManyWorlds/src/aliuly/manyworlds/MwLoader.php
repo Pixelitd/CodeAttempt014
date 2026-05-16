@@ -64,10 +64,10 @@ final class MwLoader extends BasicCli{
 			$wlst = [];
 			foreach(glob($this->owner->getServer()->getDataPath() . "worlds/*") as $f){
 				$world = basename($f);
-				if($this->owner->getServer()->getWorldManager()->isWorldLoaded($world)){
+				if($this->owner->getServer()->isLevelLoaded($world)){
 					continue;
 				}
-				if(!$this->owner->getServer()->getWorldManager()->isWorldGenerated($world)){
+				if(!$this->owner->getServer()->isLevelGenerated($world)){
 					continue;
 				}
 				$wlst[] = $world;
