@@ -701,9 +701,6 @@ class Main extends PluginBase implements Listener {
 				return;
 			}
 			$this->getServer()->getPluginManager()->callEvent($event = new SlapperHitEvent($entity, $damager));
-			if($event->isCancelled()) {
-				return;
-			}
 			$damagerName = $damager->getName();
 			if(isset($this->hitSessions[$damagerName])) {
 				if($entity instanceof SlapperHuman) {
