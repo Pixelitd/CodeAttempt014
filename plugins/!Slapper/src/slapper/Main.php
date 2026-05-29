@@ -719,7 +719,7 @@ class Main extends PluginBase implements Listener {
 			if(isset($entity->namedtag->Commands)) {
 				$server = $this->getServer();
 				foreach ($entity->namedtag->Commands as $cmd) {
-					$server->dispatchCommand(new ConsoleCommandSender(), str_replace("{player}", '"'.$damagerName.'"', $cmd));
+					$server->dispatchCommand(new ConsoleCommandSender(), str_ireplace("{player}", $damagerName, $cmd));
 				}
 			}
 		}
