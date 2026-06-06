@@ -22,14 +22,9 @@
 namespace pocketmine\command\defaults;
 
 use pocketmine\Player;
-use pocketmine\utils\Random;
 use pocketmine\utils\TextFormat;
 use pocketmine\command\CommandSender;
 use pocketmine\event\TranslationContainer;
-use pocketmine\event\Listener;
-use pocketmine\plugin\PluginBase;
-use pocketmine\event\player\PlayerPreLoginEvent;
-use pocketmine\utils\Config;
 
 class CountryCommand extends VanillaCommand
 {
@@ -38,8 +33,8 @@ class CountryCommand extends VanillaCommand
     {
         parent::__construct(
             $name,
-            "See someone's country",
-            "/country <player>"
+            "%pocketmine.command.country.description",
+            "%pocketmine.command.country.usage"
         );
         $this->owner = $name;
     }
@@ -51,12 +46,12 @@ class CountryCommand extends VanillaCommand
             $ip = $sender->getAddress();
             $location = json_decode(file_get_contents('http://ip-api.com/json/' . $ip));
             if (!isset($location->country)) {
-                $sender->sendMessage('Country: Not found');
+                $sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.country.notFound"));
                 return;
             }
             $country = $location->country;
             if ($sender instanceof Player) {
-                $sender->sendMessage('Country: ' . $country);
+                $sender->sendMessage(new TranslationContainer("commands.generic.player.success", [$country]));
             } else {
                 $sender->sendMessage("§cThis command can only be used within the game!");
             }
@@ -68,9 +63,9 @@ class CountryCommand extends VanillaCommand
                 $playerip = $player->getAddress();
                 $playerlocation = json_decode(file_get_contents('http://ip-api.com/json/' . $playerip));
                 $playercountry = $playerlocation->country;
-                $sender->sendMessage($player->getName() . "'s country is: " . $playercountry);
+                $sender->sendMessage(new TranslationContainer("pocketmine.command.country.player", [$player->getName(), $playercountry]));
             } else {
-                $sender->sendMessage("§cPlayer not found!");
+                $sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
             }
         }
 

@@ -53,7 +53,7 @@ class SpawnpointCommand extends VanillaCommand
 			if ($sender instanceof Player) {
 				$target = $sender;
 			} else {
-				$sender->sendMessage(TextFormat::RED . "Please provide a player!");
+				$sender->sendMessage(new TranslationContainer("commands.generic.usage"));
 
 				return true;
 			}
@@ -88,7 +88,7 @@ class SpawnpointCommand extends VanillaCommand
 				Command::broadcastCommandMessage($sender, new TranslationContainer("commands.spawnpoint.success", [$target->getName(), round($pos->x, 2), round($pos->y, 2), round($pos->z, 2)]));
 				return true;
 			} else {
-				$sender->sendMessage(TextFormat::RED . "Please provide a player!");
+				$sender->sendMessage(new TranslationContainer("commands.generic.usage"));
 
 				return true;
 			}

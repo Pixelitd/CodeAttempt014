@@ -60,7 +60,6 @@ class TimeCommand extends VanillaCommand
 				$level->startTime();
 				$level->checkTime();
 			}
-			Command::broadcastCommandMessage($sender, "Restarted the time");
 			return true;
 		} elseif ($args[0] === "stop") {
 			if (!$sender->hasPermission("pocketmine.command.time.stop")) {
@@ -73,7 +72,6 @@ class TimeCommand extends VanillaCommand
 				$level->stopTime();
 				$level->checkTime();
 			}
-			Command::broadcastCommandMessage($sender, "Stopped the time");
 			return true;
 		} elseif ($args[0] === "query") {
 			if (!$sender->hasPermission("pocketmine.command.time.query")) {

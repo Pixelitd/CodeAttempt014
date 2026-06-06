@@ -51,8 +51,6 @@ server:
  #Escolha como lembrar o jogador quando um jogador entrar
  #0 = Message, 1 = Tip, 2 = Popup
  player-msg-type: 0
- login-msg: "§3@player joined the game"
- logout-msg: "§3@player left the game"
  #Escolha se lê receitas de json
  recipes-from-json: false
  #Escolha se deseja ler o item criativo da json

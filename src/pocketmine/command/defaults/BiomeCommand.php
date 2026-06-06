@@ -34,7 +34,7 @@ class BiomeCommand extends VanillaCommand
 		parent::__construct(
 			$name,
 			"%pocketmine.command.biome.description",
-			"/biome <pos1|pos2|get|set|color>"
+			"%pocketmine.command.biome.usage"
 		);
 		$this->setPermission("pocketmine.command.biome");
 	}

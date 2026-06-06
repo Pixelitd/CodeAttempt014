@@ -32,8 +32,8 @@ class DumpMemoryCommand extends VanillaCommand
 	{
 		parent::__construct(
 			$name,
-			"Dumps the memory",
-			"/$name [path]"
+			"%pocketmine.command.dumpmemory.description",
+			"%pocketmine.command.dumpmemory.usage"
 		);
 		$this->setPermission("pocketmine.command.dumpmemory");
 	}
@@ -44,7 +44,7 @@ class DumpMemoryCommand extends VanillaCommand
 			return true;
 		}
 
-		Command::broadcastCommandMessage($sender, "Dumping server memory");
+		Command::broadcastCommandMessage($sender, "%pocketmine.command.dumpmemory.dumping");
 
 		$sender->getServer()->getMemoryManager()->dumpServerMemory(isset($args[0]) ? $args[0] : $sender->getServer()->getDataPath() . "/memory_dumps/memoryDump_" . date("D_M_j-H.i.s-T_Y", time()), 48, 80);
 		return true;

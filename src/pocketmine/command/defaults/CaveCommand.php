@@ -41,7 +41,7 @@ class CaveCommand extends VanillaCommand
 	{
 		parent::__construct(
 			$name,
-			"Generate a cave",
+			"%pocketmine.commands.cave.description",
 			"%pocketmine.commands.cave.usage"
 		);
 		$this->setPermission("pocketmine.command.cave");
@@ -55,7 +55,7 @@ class CaveCommand extends VanillaCommand
 
 		//TODO: Get rid of this and add support for relative coordinaties
 		if ($sender instanceof Player and $args[0] == "getmypos") {
-			$sender->sendMessage("Your position: ({$sender->getX()}, {$sender->getY()}, {$sender->getZ()}, {$sender->getLevel()->getFolderName()})");
+			$sender->sendMessage(new TranslationContainer("pocketmine.commands.cave.position", [$sender->getX(), $sender->getY(), $sender->getZ(), $sender->getLevel()->getFolderName()]));
 			return true;
 		}
 
@@ -67,7 +67,7 @@ class CaveCommand extends VanillaCommand
 		}
 		$level = $sender->getServer()->getLevelByName($args[7]);
 		if (!$level instanceof Level) {
-			$sender->sendMessage(TextFormat::RED . "Wrong LevelName");
+			$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.commands.cave.wrong"));
 			return false;
 		}
 		$pos = new Position($args[4], $args[5], $args[6], $level);
@@ -214,7 +214,7 @@ class CaveCommand extends VanillaCommand
 
 	public function lavaSpawn(Level $level, $x, $y, $z)
 	{
-		$level->getServer()->getLogger()->info("生成岩浆中 " . "floor($x)" . ", " . "floor($y)" . ", " . floor($z));
+		$level->getServer()->getLogger()->debug("生成岩浆中 " . "floor($x)" . ", " . "floor($y)" . ", " . floor($z));
 		for ($xx = $x - 20; $xx <= $x + 20; $xx++) {
 			for ($zz = $z - 20; $zz <= $z + 20; $zz++) {
 				for ($yy = $y; $yy > $y - 4; $yy--) {
@@ -283,7 +283,7 @@ class CaveCommand extends VanillaCommand
 
 	public function fdx($x, $y, $z, Level $level, $liu = false)
 	{
-		//$this->getLogger()->info(TextFormat::GREEN."fdx!");
+		$level->getServer()->getLogger()->debug(TextFormat::GREEN."fdx!");
 		for ($i = 1; $i < mt_rand(2, 4); $i++) {
 			$level->setBlockIdAt($x + $i - 2, $y - 1, $z + 1, 0);
 			$level->setBlockIdAt($x + $i - 2, $y - 1, $z, 0);

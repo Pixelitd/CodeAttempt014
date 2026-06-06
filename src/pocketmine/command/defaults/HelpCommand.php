@@ -81,7 +81,7 @@ class HelpCommand extends VanillaCommand
 			if ($pageNumber < 1) {
 				$pageNumber = 1;
 			}
-			$sender->sendMessage(new TranslationContainer("commands.help.header", [$pageNumber, count($commands)]));
+			$sender->sendMessage(new TranslationContainer("commands.help.header", [$pageNumber, count($commands)])); 
 			if (isset($commands[$pageNumber - 1])) {
 				foreach ($commands[$pageNumber - 1] as $command) {
 					$sender->sendMessage(TextFormat::DARK_GREEN . "/" . $command->getName() . ": " . TextFormat::WHITE . $command->getDescription());
@@ -92,15 +92,15 @@ class HelpCommand extends VanillaCommand
 		} else {
 			if (($cmd = $sender->getServer()->getCommandMap()->getCommand(strtolower($command))) instanceof Command) {
 				if ($cmd->testPermissionSilent($sender)) {
-					$message = TextFormat::YELLOW . "--------- " . TextFormat::WHITE . " Help: /" . $cmd->getName() . TextFormat::YELLOW . " ---------\n";
-					$message .= TextFormat::GOLD . "Description: " . TextFormat::WHITE . $cmd->getDescription() . "\n";
-					$message .= TextFormat::GOLD . "Usage: " . TextFormat::WHITE . implode("\n" . TextFormat::WHITE, explode("\n", $cmd->getUsage())) . "\n";
+					$message = new TranslationContainer(TextFormat::YELLOW . "--------- " . TextFormat::WHITE . " Help: /" . $cmd->getName() . TextFormat::YELLOW . " ---------\n");
+					$message .= TextFormat::GOLD . "%commands.help.command.description" . TextFormat::WHITE . " ". $cmd->getDescription() . "\n";
+					$message .= TextFormat::GOLD . "%commands.help.command.usage" . TextFormat::WHITE . " " . implode("\n" . TextFormat::WHITE, explode("\n", $cmd->getUsage())) . "\n";
 					$sender->sendMessage($message);
 
 					return true;
 				}
 			}
-			$sender->sendMessage(TextFormat::RED . "No help for " . strtolower($command));
+			$sender->sendMessage(TextFormat::RED . new TranslationContainer("No help for {%0}", [strtolower($command)]));
 
 			return true;
 		}

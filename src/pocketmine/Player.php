@@ -903,9 +903,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
             if ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_MESSAGE) {
                 $this->server->broadcastMessage($msg);
             } elseif ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_TIP) {
-                $this->server->broadcastTip(str_replace("@player", $this->getName(), $this->server->playerLoginMsg));
+                $this->server->broadcastTip($msg);
             } elseif ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_POPUP) {
-                $this->server->broadcastPopup(str_replace("@player", $this->getName(), $this->server->playerLoginMsg));
+                $this->server->broadcastPopup($msg);
             }
         }
         $this->server->onPlayerLogin($this);
@@ -2872,7 +2872,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
             }
             $message = $message->getText();
         }
-        $mes = explode("\n", $this->server->getLanguage()->translateString($message));
+        $mes = explode("\n", $this->server->getPlayerLanguage($this)->translateString($message));
         foreach ($mes as $m) {
             if ($m !== "") {
                 $this->server->getPluginManager()->callEvent($ev = new PlayerTextPreSendEvent($this, $m, PlayerTextPreSendEvent::MESSAGE));
@@ -2892,18 +2892,18 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
         $pk = new TextPacket();
         if (!$this->server->isLanguageForced()) {
             $pk->type = TextPacket::TYPE_TRANSLATION;
-            $pk->message = $this->server->getLanguage()->translateString($message, $parameters, "pocketmine.");
+            $m = $this->server->getPlayerLanguage($this)->translateString($message, $parameters, "pocketmine.");
             foreach ($parameters as $i => $p) {
-                $parameters[$i] = $this->server->getLanguage()->translateString($p, $parameters, "pocketmine.");
+                $parameters[$i] = $this->server->getPlayerLanguage($this)->translateString($p, $parameters, "pocketmine.");
             }
             $pk->parameters = $parameters;
         } else {
             $pk->type = TextPacket::TYPE_RAW;
-            $pk->message = $this->server->getLanguage()->translateString($message, $parameters);
+            $m = $this->server->getPlayerLanguage($this)->translateString($message, $parameters);
         }
-        $ev = new PlayerTextPreSendEvent($this, $pk->message, PlayerTextPreSendEvent::TRANSLATED_MESSAGE);
-        $this->server->getPluginManager()->callEvent($ev);
+        $this->server->getPluginManager()->callEvent($ev = new PlayerTextPreSendEvent($this, $m, PlayerTextPreSendEvent::TRANSLATED_MESSAGE));
         if (!$ev->isCancelled()) {
+            $pk->message = $ev->getMessage();
             $this->dataPacket($pk);
             return true;
         }
@@ -2987,9 +2987,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
                 if ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_MESSAGE) {
                     $this->server->broadcastMessage($ev->getQuitMessage());
                 } elseif ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_TIP) {
-                    $this->server->broadcastTip(str_replace("@player", $this->getName(), $this->server->playerLogoutMsg));
+                    $this->server->broadcastTip($ev->getQuitMessage());
                 } elseif ($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_POPUP) {
-                    $this->server->broadcastPopup(str_replace("@player", $this->getName(), $this->server->playerLogoutMsg));
+                    $this->server->broadcastPopup($ev->getLeaveMessage());
                 }
             }
             $this->spawned = false;

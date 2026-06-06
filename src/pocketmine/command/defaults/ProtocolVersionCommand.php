@@ -22,7 +22,6 @@
 namespace pocketmine\command\defaults;
 
 use pocketmine\Player;
-use pocketmine\utils\Random;
 use pocketmine\utils\TextFormat;
 use pocketmine\command\CommandSender;
 use pocketmine\event\TranslationContainer;
@@ -34,8 +33,8 @@ class ProtocolVersionCommand extends VanillaCommand
 	{
 		parent::__construct(
 			$name,
-			"See someone's protocol version",
-			"/protocolversion <player>"
+			"%pocketmine.command.protocolversion.description",
+			"%pocketmine.command.protocolversion.usage"
 		);
 	}
 
@@ -45,17 +44,17 @@ class ProtocolVersionCommand extends VanillaCommand
 		if (count($args) == 0) {
 
 			if ($sender instanceof Player) {
-				$sender->sendMessage('Protocol version: ' . $sender->getProtocol() . ' (' . $sender->getPlayerVersion() . '.x)');
+				$sender->sendMessage("pocketmine.command.protocolversion.success", [$sender->getProtocol(), $sender->getPlayerVersion()]);
 			} else {
-				$sender->sendMessage("§cThis command can only be used within the game!");
+				$sender->sendMessage(new TranslationContainer("commands.generic.runingame"));
 			}
 		}
 
 		if (count($args) == 1) {
 			if ($player = $sender->getServer()->getPlayer($args[0])) {
-				$sender->sendMessage($player->getName() . "'s protocol version is: " . $player->getProtocol() . ' (' . $player->getPlayerVersion() . '.x)');
+				$sender->sendMessage("pocketmine.command.protocolversion.player", [$player->getName(), $player->getProtocol(), $player->getPlayerVersion()]);
 			} else {
-				$sender->sendMessage("§cPlayer not found!");
+				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
 			}
 		}
 

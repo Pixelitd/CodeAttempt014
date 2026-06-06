@@ -51,8 +51,6 @@ server:
  #Chọn để thông báo người chơi đã vào hoặc rời (nếu bạn không biết có thể bỏ qua)
  #0 = Tin nhắn, 1 = Mẹo, 2 = Thanh nổi ở thanh chọn đồ
  player-msg-type: 0
- login-msg: "§3@player joined the game"
- logout-msg: "§3@player left the game"
  #Bật/tắt nếu muốn sử dụng đồ chế tạo qua file json (mặc định: false) (true/false)
  recipes-from-json: false
  #Bật/tắt nếu muốn sử dụng đồ cre qua file json (mặc định: false) (true/false)

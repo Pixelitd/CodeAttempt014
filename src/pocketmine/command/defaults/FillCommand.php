@@ -70,22 +70,22 @@ class FillCommand extends VanillaCommand
 									if ($this->setBlock(new Vector3($x, $y, $z), $level, $item, isset($args[7]) ? $args[7] : 0)) {
 										$n++;
 										if (is_int($n / 10000)) {
-											$sender->sendMessage(new TranslationContainer("$n out of $nmax blocks filled, now at $x $y $z", []));
+											$sender->sendMessage(new TranslationContainer("pocketmine.command.fill.success", [$n, $nmax, $x, $y, $z,]));
 										}
 									} else {
-										$sender->sendMessage(TextFormat::RED . new TranslationContainer("Error after filling $n out of $nmax blocks.", []));
+										$sender->sendMessage(TextFormat::RED . new TranslationContainer("%pocketmine.command.fill.error", [$n, $nmax]));
 										return false;
 									}
 								}
 							}
 						}
-						$sender->sendMessage(new TranslationContainer("Total of $n blocks filled.", []));
+						$sender->sendMessage(new TranslationContainer("pocketmine.command.fill.total", [$n]));
 						return true;
 					}
-					$sender->sendMessage(TextFormat::RED . new TranslationContainer($args[6] . " is not a valid block.", []));
+					$sender->sendMessage(TextFormat::RED . new TranslationContainer("pocketmine.command.fill.invalid.block", [$args[6]]));
 					return false;
 				}
-				$sender->sendMessage(TextFormat::RED . new TranslationContainer($args[$a] . " is not a valid coordinate.", []));
+				$sender->sendMessage(TextFormat::RED . new TranslationContainer("pocketmine.command.fill.invalid.coordinates", [$args[$a]]));
 				$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
 				return false;
 			}

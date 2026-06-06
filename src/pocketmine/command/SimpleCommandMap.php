@@ -76,6 +76,7 @@ use pocketmine\command\defaults\VersionCommand;
 use pocketmine\command\defaults\WeatherCommand;
 use pocketmine\command\defaults\WhitelistCommand;
 use pocketmine\command\defaults\XpCommand;
+use pocketmine\command\defaults\LanguageCommand;
 
 use pocketmine\event\TranslationContainer;
 use pocketmine\Player;
@@ -154,6 +155,7 @@ class SimpleCommandMap implements CommandMap
 		$this->register("pocketmine", new ParticleCommand("particle"));
 		$this->register("pocketmine", new GamemodeCommand("gamemode"));
 		$this->register("pocketmine", new KillCommand("kill"));
+		$this->register("pocketmine", new LanguageCommand("language"));
 		$this->register("pocketmine", new SpawnpointCommand("spawnpoint"));
 		$this->register("pocketmine", new SetWorldSpawnCommand("setworldspawn"));
 		$this->register("pocketmine", new SummonCommand("summon"));
