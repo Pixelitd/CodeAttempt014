@@ -60,7 +60,7 @@ class EffectCommand extends VanillaCommand
 		}
 
 		if ($player->getName() != $sender->getName() && !$sender->hasPermission("pocketmine.command.effect.other")) {
-			$sender->sendMessage("You don't have permission to give effect to other player .");
+			$sender->sendMessage(new TranslationContainer("commands.generic.permission"));
 			return true;
 		}
 

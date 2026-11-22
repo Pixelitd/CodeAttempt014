@@ -50,8 +50,6 @@ server:
  async-chunk-request: true
  #玩家進出伺服器訊息提醒方式。0為Message，1為Tip，2為Popup
  player-msg-type: 0
- login-msg: "§3@player 加入了遊戲"
- logout-msg: "§3@player 離開了遊戲"
  #是否從recipes.json讀取合成公式
  recipes-from-json: false
  #是否從creativeitems.json讀取創造物品

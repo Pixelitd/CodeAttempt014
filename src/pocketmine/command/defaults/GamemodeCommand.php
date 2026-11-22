@@ -57,7 +57,7 @@ class GamemodeCommand extends VanillaCommand
 		$gameMode = (int) Server::getGamemodeFromString($args[0]);
 
 		if ($gameMode === -1) {
-			$sender->sendMessage("Unknown game mode");
+			$sender->sendMessage(new TranslationContainer("pocketmine.command.gamemode.unknown"));
 
 			return true;
 		}
@@ -77,7 +77,7 @@ class GamemodeCommand extends VanillaCommand
 		}
 
 		if ($target->setGamemode($gameMode) == false) {
-			$sender->sendMessage(TextFormat::RED . "Game mode change for " . $target->getName() . " failed!");
+			$sender->sendMessage(TextFormat::RED . "pocketmine.command.gamemode.failed", [$target->getName()]);
 		} else {
 			if ($target === $sender) {
 				Command::broadcastCommandMessage($sender, new TranslationContainer("commands.gamemode.success.self", [Server::getGamemodeString($gameMode)]));

@@ -60,7 +60,7 @@ class BanCidByNameCommand extends VanillaCommand
 
 		$sender->getServer()->getCIDBans()->addBan($target->getClientId(), $reason, null, $sender->getName());
 
-		$target->kick($reason !== "" ? "Banned by admin. Reason:" . $reason : "Banned by admin.");
+		$target->kick($reason !== "" ? new TranslationContainer("commands.ban.success.reason", [$reason]) : new TranslationContainer("commands.ban.success.banned"));
 
 		Command::broadcastCommandMessage($sender, new TranslationContainer("%commands.bancidbyname.success", [$target !== null ? $target->getName() : $name]));
 

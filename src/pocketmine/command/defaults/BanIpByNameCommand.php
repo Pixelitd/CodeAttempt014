@@ -61,7 +61,7 @@ class BanIpByNameCommand extends VanillaCommand
 		$sender->getServer()->getIPBans()->addBan($target->getAddress(), $reason, \null, $sender->getName());
 
 		if (($player = $sender->getServer()->getPlayerExact($name)) instanceof Player) {
-			$player->kick($reason !== "" ? "Banned by admin. Reason:" . $reason : "Banned by admin.");
+			$player->kick($reason !== "" ? new TranslationContainer("disconnectionScreen.banned.reason", [$reason]) : new TranslationContainer("commands.ban.success.banned"));
 		}
 
 		Command::broadcastCommandMessage($sender, new TranslationContainer("%commands.banipbyname.success", [$player !== \null ? $player->getName() : $name]));

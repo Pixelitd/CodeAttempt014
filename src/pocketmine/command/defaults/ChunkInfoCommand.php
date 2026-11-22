@@ -35,8 +35,8 @@ class ChunkInfoCommand extends VanillaCommand
 	{
 		parent::__construct(
 			$name,
-			"Gets the information of a chunk or regenerate a chunk",
-			"/chunkinfo (x) (y) (z) (levelName) (regenerate)"
+			"%pocketmine.command.chunkinfo.description",
+			"%pocketmine.command.chunkinfo.usage"
 		);
 		$this->setPermission("pocketmine.command.chunkinfo");
 	}
@@ -62,9 +62,9 @@ class ChunkInfoCommand extends VanillaCommand
 		} else {
 			$level = $sender->getServer()->getLevelByName($args[3]);
 			if (!$level instanceof Level) {
-				$sender->sendMessage(TextFormat::RED . "Invalid level name");
+				$sender->sendMessage(TextFormat::RED . "%pocketmine.command.chunkinfo.invalid");
 
-				return false;
+				return false;	
 			}
 			$pos = new Position((int) $args[0], (int) $args[1], (int) $args[2], $level);
 		}
@@ -73,11 +73,11 @@ class ChunkInfoCommand extends VanillaCommand
 			$chunk = $pos->getLevel()->getChunk($pos->x >> 4, $pos->z >> 4);
 			McRegion::getRegionIndex($chunk->getX(), $chunk->getZ(), $x, $z);
 
-			$sender->sendMessage("Region X: $x Region Z: $z");
+			$sender->sendMessage(new TranslationContainer("pocketmine.command.chunkinfo.regenerate", [$x,$z]));
 		} elseif ($args[4] == "regenerate") {
 			foreach ($sender->getServer()->getOnlinePlayers() as $p) {
 				if ($p->getLevel() == $pos->getLevel()) {
-					$p->kick(TextFormat::AQUA . "A chunk of this chunk is regenerating, please re-login.", false);
+					$p->kick(TextFormat::AQUA . "%pocketmine.command.chunkinfo.kick", false);
 				}
 			}
 			$pos->getLevel()->regenerateChunk($pos->x >> 4, $pos->z >> 4);

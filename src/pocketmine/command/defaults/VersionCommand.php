@@ -92,15 +92,11 @@ class VersionCommand extends VanillaCommand
 		}
 
 		if ($desc->getWebsite() != null) {
-			$sender->sendMessage("Website: " . $desc->getWebsite());
+			$sender->sendMessage(new TranslationContainer("pocketmine.command.version.plugin.website", [$desc->getWebsite()]));
 		}
 
 		if (count($authors = $desc->getAuthors()) > 0) {
-			if (count($authors) === 1) {
-				$sender->sendMessage("Author: " . implode(", ", $authors));
-			} else {
-				$sender->sendMessage("Authors: " . implode(", ", $authors));
-			}
+			$sender->sendMessage(new TranslationContainer("%pocketmine.command.version.plugin.author", [implode(", ", $authors)]));
 		}
 	}
 }

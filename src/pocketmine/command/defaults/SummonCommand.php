@@ -66,11 +66,11 @@ class SummonCommand extends VanillaCommand{
 				if($sender instanceof Player){            //using in-game
 					$x = is_numeric($offset_x) ? ($sender->x + $offset_x) : $sender->x;
 				}else{                                                            //using in console
-					$sender->sendMessage(TextFormat::RED . "You must specify a position where the entity is spawned to when using in console");
+					$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.summon.position"));
 					return false;
 				}
 			}else{                                                                //other circumstances
-				$sender->sendMessage(TextFormat::RED . "Argument error");
+				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "pocketmine.command.summon.argument.error"));
 				return false;
 			}
 
@@ -83,11 +83,11 @@ class SummonCommand extends VanillaCommand{
 					$y = is_numeric($offset_y) ? ($sender->y + $offset_y) : $sender->y;
 					$y = min(128, max(0, $y));
 				}else{                                                            //using in console
-					$sender->sendMessage(TextFormat::RED . "You must specify a position where the entity is spawned to when using in console");
+					$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.summon.position"));
 					return false;
 				}
 			}else{                                                                //other circumstances
-				$sender->sendMessage(TextFormat::RED . "Argument error");
+				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "pocketmine.command.summon.argument.error"));
 				return false;
 			}
 
@@ -99,11 +99,11 @@ class SummonCommand extends VanillaCommand{
 				if($sender instanceof Player){            //using in-game
 					$z = is_numeric($offset_z) ? ($sender->z + $offset_z) : $sender->z;
 				}else{                                                            //using in console
-					$sender->sendMessage(TextFormat::RED . "You must specify a position where the entity is spawned to when using in console");
+					$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.summon.position"));
 					return false;
 				}
 			}else{                                                                //other circumstances
-				$sender->sendMessage(TextFormat::RED . "Argument error");
+				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "pocketmine.command.summon.argument.error"));
 				return false;
 			}
 		}    //finish setting the location
@@ -114,7 +114,7 @@ class SummonCommand extends VanillaCommand{
 				$y = $sender->y;
 				$z = $sender->z;
 			}else{
-				$sender->sendMessage(TextFormat::RED . "You must specify a position where the entity is spawned to when using in console");
+				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.summon.position"));
 				return false;
 			}
 		} //finish setting the location
@@ -147,10 +147,10 @@ class SummonCommand extends VanillaCommand{
 		$entity = Entity::createEntity($type, $chunk, $nbt);
 		if($entity instanceof Entity){
 			$entity->spawnToAll();
-			$sender->sendMessage("Successfully spawned entity $type at ($x, $y, $z)");
+			$sender->sendMessage(new TranslationContainer("pocketmine.command.summon.success"));
 			return true;
 		}else{
-			$sender->sendMessage(TextFormat::RED . "An error occurred when spawning the entity $type");
+			$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%pocketmine.command.summon.error", [$type]));
 			return false;
 		}
 	}

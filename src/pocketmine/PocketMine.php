@@ -72,9 +72,9 @@ namespace pocketmine {
     use pocketmine\utils\Utils;
     use pocketmine\wizard\Installer;
 
-    const VERSION = "LearXD_Tubunga_Edition_v2.1_MOD_Pixelited_v0.9"; //will be set by CI to a git hash
+    const VERSION = "LearXD_Tubunga_Edition_v2.1_MOD_Pixelited_v1.0"; //will be set by CI to a git hash
     const API_VERSION = "2.0.0";
-    const CODENAME = "Khronos";
+    const CODENAME = "Universal";
     const MINECRAFT_VERSION = "v0.14.0...0.15.10 alpha";
     const MINECRAFT_VERSION_NETWORK = "0.14.0...0.15.10";
     const GENISYS_API_VERSION = '1.9.3';

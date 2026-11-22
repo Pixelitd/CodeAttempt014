@@ -53,7 +53,7 @@ class SetWorldSpawnCommand extends VanillaCommand
 				$level = $sender->getLevel();
 				$pos = (new Vector3($sender->x, $sender->y, $sender->z))->round();
 			} else {
-				$sender->sendMessage(TextFormat::RED . "You can only perform this command as a player");
+				$sender->sendMessage(new TranslationContainer("commands.generic.runingame"));
 
 				return true;
 			}

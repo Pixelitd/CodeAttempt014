@@ -2921,6 +2921,18 @@ class Server
 		return $this->baseLang;
 	}
 
+	public function getPlayerLanguage(Player $player)
+	{
+		$playerLang = $player->namedtag->getString("Language", "");
+		return $this->basePlayerLang = new BaseLang($playerLang);
+	}
+
+	public function setPlayerLanguage(Player $player, $lang)
+	{
+		$player->namedtag["Language"] = new StringTag("Language", "$lang");
+        $player->getServer()->saveOfflinePlayerData($player->getName(), $player->namedtag);
+	}
+
 	/**
 	 * @return bool
 	 */
